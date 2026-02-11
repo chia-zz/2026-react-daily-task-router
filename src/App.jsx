@@ -1,6 +1,9 @@
 import './App.css';
-import { HashRouter, NavLink } from 'react-router-dom';
+import { HashRouter, NavLink, Route, Routes } from 'react-router-dom';
 
+const Homepage = () => {
+  return <p>這是首頁</p>;
+};
 const Todo = () => {
   return <p>這是 Todo 頁面</p>;
 };
@@ -13,23 +16,29 @@ const Register = () => {
 
 function App() {
   return (
-    <div className="container">
+    <div className='container'>
       <HashRouter>
-        <div className="nav-link">
-          <NavLink to="/">
+        <div className='nav-link'>
+          <NavLink to='/'>
             <p>回到首頁</p>
           </NavLink>
-          <NavLink to="/register">
+          <NavLink to='/register'>
             <p>註冊頁面</p>
           </NavLink>
-          <NavLink to="/login">
+          <NavLink to='/login'>
             <p>登入頁面</p>
           </NavLink>
-          <NavLink to="/todo">
+          <NavLink to='/todo'>
             <p>Todo 頁面</p>
           </NavLink>
         </div>
         {/* Routes, Route 練習區 */}
+        <Routes>
+          <Route path='/' element={<Homepage />} />
+          <Route path='/todo' element={<Todo />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+        </Routes>
         {/* 練習區 */}
       </HashRouter>
     </div>
